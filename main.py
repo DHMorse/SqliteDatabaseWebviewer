@@ -43,8 +43,8 @@ def show_table_contents(table_name):
         
         # Ensure user_id is always displayed as an int
         for row in rows:
-            if 'user_id' in row:
-                row['user_id'] = int(row['user_id'])
+            if 'userId' in row:
+                row['userId'] = int(row['userId'])
         
         # Apply transformation to the data
         rows = transform_data(rows)
