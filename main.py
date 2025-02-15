@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import sqlite3
 import json
 
@@ -16,12 +16,11 @@ def get_db_connection():
 def list_tables():
     conn = get_db_connection()
     cursor = conn.cursor()
-    # In SQLite, we need to query the sqlite_master table to get table names
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
-    tables = cursor.fetchall()
+    tables = [table[0] for table in cursor.fetchall()]
     cursor.close()
     conn.close()
-    return jsonify([table[0] for table in tables])
+    return render_template('index.html', tables=tables)
 
 # Function to transform the 'items' field
 def transform_data(data):
@@ -35,33 +34,26 @@ def get_users():
     conn = get_db_connection()
     cursor = conn.cursor()
     try:
-        # Get user_id from query parameters if provided
         user_id = request.args.get('userId')
         
         if user_id:
-            # If user_id is provided, filter for that specific user
             cursor.execute("SELECT * FROM users WHERE userId = ?", (user_id,))
         else:
-            # If no user_id is provided, get all users
             cursor.execute("SELECT * FROM users")
         
-        # Convert the rows to dictionaries
         columns = [description[0] for description in cursor.description]
         rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
         
-        # Ensure user_id is always displayed as an int
         for row in rows:
             if 'userId' in row:
                 row['userId'] = int(row['userId'])
         
-        # Apply transformation to the data
         rows = transform_data(rows)
         
         if user_id and not rows:
             return jsonify({'error': 'User not found'}), 404
-            
+        
         return jsonify(rows)
-    
     except sqlite3.Error as e:
         return jsonify({'error': str(e)}), 500
     finally:
@@ -74,16 +66,13 @@ def show_table_contents(table_name):
     cursor = conn.cursor()
     try:
         cursor.execute(f"SELECT * FROM {table_name}")
-        # Convert the rows to dictionaries
         columns = [description[0] for description in cursor.description]
         rows = [dict(zip(columns, row)) for row in cursor.fetchall()]
         
-        # Ensure user_id is always displayed as an int
         for row in rows:
             if 'userId' in row:
                 row['userId'] = int(row['userId'])
         
-        # Apply transformation to the data
         rows = transform_data(rows)
         return jsonify(rows)
     except sqlite3.Error as e:
@@ -93,4 +82,4 @@ def show_table_contents(table_name):
         conn.close()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5000)

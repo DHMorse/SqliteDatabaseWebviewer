@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Tables</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Database Tables</h1>
+        <ul>
+            {% for table in tables %}
+                <li><a href="{{ url_for('show_table_contents', table_name=table) }}">{{ table }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
