@@ -12,7 +12,7 @@ app = Flask(__name__)
 def index():
     global DATABASE, PASSWORD_PROTECTION, USERS
     
-    if not isClientLoggedIn() and PASSWORD_PROTECTION:
+    if not isClientLoggedIn(loggedInUsers) and PASSWORD_PROTECTION:
         return render_template('login.html'), 302
     
     with sqlite3.connect(DATABASE) as conn:

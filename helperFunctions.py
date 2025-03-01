@@ -4,10 +4,9 @@ import json
 from flask import request
 
 
-def isClientLoggedIn() -> bool:
+def isClientLoggedIn(loggedInUsers) -> bool:
     """Function to check if the client is logged in based off their current IP address."""
 
-    global loggedInUsers
     clientIp = request.remote_addr
     return any(clientIp == user[0] for user in loggedInUsers)
 
