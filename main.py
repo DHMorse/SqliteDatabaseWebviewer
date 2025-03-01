@@ -45,7 +45,7 @@ def index():
 def show_table_contents(tableName):
     global DATABASE, PASSWORD_PROTECTION, USERS
 
-    if not isClientLoggedIn() and PASSWORD_PROTECTION:
+    if not isClientLoggedIn(loggedInUsers) and PASSWORD_PROTECTION:
         return render_template('login.html'), 302, {'Location': '/'}
     
     if PASSWORD_PROTECTION:
