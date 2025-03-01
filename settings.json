@@ -1,0 +1,29 @@
+{
+    "DATABASE_FILEPATH": "database.db",
+    "PASSWORD_PROTECTION": true,
+    "LOG_OUT_USERS": true,
+    "LOG_OUT_USERS_AFTER": 3600,
+    "users": {
+        "admin": {
+            "password": "admin",
+            "tables": [
+                "*"
+            ],
+            "permissions": [
+                "*"
+            ]
+        },
+        "John Doe": {
+            "password": "user",
+            "tables": [
+                null
+            ],
+            "permissions": [
+                null
+            ]
+        }
+    },
+    "HOST": "default",
+    "PORT": "default",
+    "DEBUG": true
+}

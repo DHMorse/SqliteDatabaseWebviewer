@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Tables</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='table.js') }}"></script>
+</head>
+<body>
+    <!-- Back button -->
+    <div class="main-page-button-container">
+        <a href="{{ url_for('index') }}" class="main-page-button">Back</a>
+    </div>
+
+    <div class="table-container">
+        <button class="copy-all-data-btn" onclick="copyAllData()">Copy All Table Data</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Actions</th>
+                    {% for column in columns %}
+                    <th>
+                        <div class="header-cell">
+                            <span>{{ column }}</span>
+                            <button class="copy-btn" onclick="copyToClipboard('{{ column }}')">Copy</button>
+                        </div>
+                    </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr data-row-index="{{ loop.index0 }}">
+                    <td>
+                        <button class="copy-row-btn" onclick="copyRowData({{ loop.index0 }})">Copy Row</button>
+                        <button class="copy-row-csv-btn" onclick="copyRowDataAsCSV({{ loop.index0 }})">Copy CSV</button>
+                    </td>
+                    {% for value in row %}
+                    <td>
+                        <div class="data-cell">
+                            <span class="data-cell-content">{{ value }}</span>
+                            <button class="copy-btn" onclick="copyToClipboard('{{ value }}')">Copy</button>
+                        </div>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Store all data in a format accessible to our JS functions
+        const tableData = {
+            tableName: "{{ table }}",
+            columns: {{ columns|tojson }},
+            rows: {{ rows|tojson }}
+        };
+    </script>
+</body>
+</html>

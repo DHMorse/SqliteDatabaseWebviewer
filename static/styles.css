@@ -3,32 +3,254 @@ body {
     color: #ffffff;
     font-family: Arial, sans-serif;
     text-align: center;
-}
-
-.container {
+  }
+  
+  .container {
     margin-top: 50px;
-}
-
-h1 {
+  }
+  
+  h1 {
     color: #bb86fc;
-}
-
-ul {
+  }
+  
+  ul {
     list-style-type: none;
     padding: 0;
-}
-
-li {
+  }
+  
+  li {
     margin: 10px 0;
-}
-
-a {
+  }
+  
+  a {
     color: #03dac6;
     text-decoration: none;
     font-size: 50px;
-}
-
-a:hover {
+  }
+  
+  a:hover {
     text-decoration: underline;
     color: #bb86fc;
-}
+  }
+  
+  /* Table styles */
+  .back-link {
+    display: block;
+    margin: 20px 0;
+    text-align: left;
+    font-size: 18px;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    table-layout: auto; /* Changed from fixed to auto */
+    width: max-content; /* Allow table to size based on content */
+    min-width: 100%; /* Ensure it still takes at least full width */
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    white-space: nowrap;
+    position: relative; /* For positioning buttons */
+    max-width: 300px; /* Limit cell width */
+    text-overflow: ellipsis;
+  }
+
+  th {
+    background-color: #1e1e1e;
+  }
+  
+  /* Display buttons on hover to save space */
+  .data-cell, .header-cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .data-cell-content {
+    max-width: calc(100% - 50px); /* Leave space for the button */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+  
+  .copy-btn {
+    background-color: #3700b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 8px;
+    min-width: 40px; /* Ensure button has minimum width */
+  }
+  
+  .copy-btn:hover {
+    background-color: #bb86fc;
+  }
+  
+  .big-btn {
+    background-color: #3700b3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 12px;
+    min-width: 120px; /* Increased minimum width */
+  }
+  
+  .big-btn:hover {
+    background-color: #bb86fc;
+  }
+
+  .copy-row-btn, .copy-row-csv-btn {
+    background-color: #3700b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 0 4px;
+    white-space: nowrap;
+  }
+  
+  .copy-row-btn:hover, .copy-row-csv-btn:hover {
+    background-color: #bb86fc;
+  }
+  
+  .table-title {
+    color: #bb86fc;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .copy-all-data-btn {
+    background-color: #3700b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 16px;
+    float: right;
+  }
+  
+  .copy-all-data-btn:hover {
+    background-color: #bb86fc;
+  }
+  
+  /* Ensure actions column has enough space */
+  tr th:last-child, tr td:last-child {
+    min-width: 160px;
+    text-align: center;
+  }
+  
+  /* Clear float after the top section */
+  .table-container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .login-box {
+    background-color: #1e1e1e; /* Dark background to match theme */
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border: 1px solid #333;
+  }
+  
+  .login-title {
+    text-align: center;
+    color: #bb86fc; /* Match your existing accent color */
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .form-group {
+    position: relative;
+    margin-bottom: 25px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: #bb86fc;
+    box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
+  }
+  
+  .floating-label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #888;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus + .floating-label,
+  input:not(:placeholder-shown) + .floating-label {
+    top: 0;
+    left: 10px;
+    font-size: 12px;
+    background-color: #1e1e1e;
+    padding: 0 5px;
+    color: #bb86fc;
+  }
+  
+  .login-btn {
+    width: 100%;
+    background-color: #3700b3;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #bb86fc;
+  }
+  
+  .login-btn:active {
+    transform: translateY(1px);
+  }

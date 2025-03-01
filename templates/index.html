@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database Tables</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='logout.js') }}"></script>
 </head>
 <body>
     <div class="container">
         <h1>Database Tables</h1>
+        <button class="big-btn" onclick="handleLogout()">Logout</button>
         <ul>
             {% for table in tables %}
-                <li><a href="{{ url_for('show_table_contents', table_name=table) }}">{{ table }}</a></li>
+                <li><a href="{{ url_for('show_table_contents', tableName=table) }}">{{ table }}</a></li>
             {% endfor %}
         </ul>
     </div>
+
 </body>
 </html>
