@@ -76,8 +76,6 @@ def handleSettingsFile(settingsFilepath: str) -> tuple[str, bool, bool, int, dic
                     break
             if not PASSWORD:
                 raise ValueError("No password found for admin user or any other user with admin permissions.")
-    else:
-        PASSWORD = None
 
 
 
@@ -109,15 +107,15 @@ def handleSettingsFile(settingsFilepath: str) -> tuple[str, bool, bool, int, dic
 
 
     if settings['HOST'] == 'default':
-        HOST = '0.0.0.0'
+        HOST: str = '0.0.0.0'
     else:
-        HOST: str = settings['HOST']
+        HOST = settings['HOST']
         # add some sort of checking here for valid IP address
 
 
 
     if settings['PORT'] == 'default':
-        PORT = 5000
+        PORT: int = 5000
     else:    
         PORT = settings['PORT']
         # add some sort of checking here for valid port number

@@ -124,13 +124,13 @@ def logout():
 
 if __name__ == '__main__':
         # Change this file path if you want to use a different settings file
-        settingsData: tuple[str, bool, dict, str, int, bool] = handleSettingsFile('settings.json')
+        settingsData: tuple[str, bool, bool, int, dict[str, dict[str, str] | list[str | None]], str, int, bool] = handleSettingsFile('settings.json')
 
         DATABASE: str = settingsData[0]
         PASSWORD_PROTECTION: bool = settingsData[1]
         LOG_OUT_USERS: bool = settingsData[2]
         LOG_OUT_USERS_AFTER: int = settingsData[3]
-        USERS: dict = settingsData[4]
+        USERS: dict[str, dict[str, str] | list[str | None]] = settingsData[4]
         HOST: str = settingsData[5]
         PORT: int = settingsData[6]
         DEBUG_MODE: bool = settingsData[7]
