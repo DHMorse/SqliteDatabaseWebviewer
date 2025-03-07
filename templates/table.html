@@ -10,9 +10,8 @@
 <body>
     <!-- Back button -->
     <div class="main-page-button-container">
-        <a href="index.html" class="main-page-button">Back</a>
+        <a href="{{ url_for('index') }}" class="main-page-button">Back</a>
     </div>
-
     <div class="table-container">
         <button class="copy-all-data-btn" onclick="copyAllData()">Copy All Table Data</button>
         <table>
