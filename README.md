@@ -58,6 +58,10 @@ A secure web-based SQLite database viewer that provides a user-friendly interfac
     ```bash
     ./run.sh
     ```
+    or
+    ```batch
+    .\run.bat
+    ```
 
 2. Open your browser and navigate to:
     ```
