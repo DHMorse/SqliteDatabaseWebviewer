@@ -1,5 +1,5 @@
 {
-    "DATABASE_FILEPATH": "/home/daniel/Documents/myCode/flaskAppOE/discorddb.db",
+    "DATABASE_FILEPATH": "./data/database.db",
     "PASSWORD_PROTECTION": true,
     "LOG_OUT_USERS": true,
     "LOG_OUT_USERS_AFTER": 3600,
