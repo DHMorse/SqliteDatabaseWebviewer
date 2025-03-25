@@ -105,7 +105,7 @@ setup_node() {
     if [ "$SKIP_NODE_STEPS" = true ]; then
         info "Skipping Node.js setup (not installed)"
         # Check if the compiled JavaScript exists
-        if [ ! -f "static/dist/index.js" ]; then
+        if [ ! -f "src/static/dist/index.js" ]; then
             error "Compiled JavaScript not found and Node.js not available to build it"
             error "Please install Node.js or add the compiled JavaScript files"
             exit 1
