@@ -28,8 +28,8 @@ A secure web-based SQLite database viewer that provides a user-friendly interfac
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/SqliteDatabaseWebviewer.git
-    cd SqliteDatabaseWebviewer
+    git clone https://github.com/DHMorse/sqliteDatabaseWebviewer.git
+    cd sqliteDatabaseWebviewer
     ```
 
 2. Configure the `settings.json` file:
@@ -73,7 +73,7 @@ A secure web-based SQLite database viewer that provides a user-friendly interfac
 ## 📁 Project Structure
 
 ```
-SqliteDatabaseWebviewer/
+sqliteDatabaseWebviewer/
 ├── src/                   # Source code directory
 │   ├── app.py            # Main Flask application
 │   ├── helperFunctions.py # Helper functions and utilities
