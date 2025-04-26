@@ -1,3 +1,4 @@
+"use strict";
 function handleLogout() {
     fetch('/logout', {
         method: 'POST',
@@ -5,10 +6,10 @@ function handleLogout() {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => {
+        .then((response) => {
         if (response.ok) {
             window.location.href = '/';
         }
     })
-    .catch(error => console.error('Error:', error));
+        .catch((error) => console.error('Error:', error));
 }

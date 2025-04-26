@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database Tables</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="{{ url_for('static', filename='table.js') }}"></script>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/dist/table.js"></script>
 </head>
 <body>
     <!-- Back button -->
     <div class="main-page-button-container">
         <a href="{{ url_for('index') }}" class="main-page-button">Back</a>
     </div>
-
     <div class="table-container">
         <button class="copy-all-data-btn" onclick="copyAllData()">Copy All Table Data</button>
         <table>
